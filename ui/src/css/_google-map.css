@@ -1,0 +1,7 @@
+.vue-map-container {
+    @apply p-28 h-64 xl:p-40 xl:h-64;
+  }
+
+.vue-map {
+   @apply p-28 h-64 xl:p-36 xl:h-64 max-w-lg;
+  }
