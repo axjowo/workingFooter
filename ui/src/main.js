@@ -51,7 +51,7 @@ app.use(router)
 /* keep api Key Secret! */
 app.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyAj5ftv3SvxFbeQ8urfMBnJLzBbnFNjpn0'
+    key: 'Secret Key'
   }
 })
 app.mount('#app')
