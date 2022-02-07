@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue' // , inject, computed
+import { ref } from 'vue' // , inject, computed
 // import { useStore } from 'vuex'
 import MainSection from '@/components/MainSection.vue'
 import CardComponent from '@/components/CardComponent.vue'
@@ -11,16 +11,25 @@ import JbButton from '@/components/JbButton.vue'
 
 const { default: axios } = require('axios')
 
-const vehicles = ref([])
-onMounted(async () => {
-  await axios
-    .get('http://localhost:5000/vehicles')
-    .then(response => {
-      vehicles.value = response.data.data
-    })
-})
-
+function handleRemove (id) {
+  axios.delete('http://localhost:5000/api_v1/vehicles/' + id)
+}
 /**
+const vMyDirective = {
+  data: (el) => {
+    // do something with the element
+  }
+}
+*/
+const center = ref({ lat: 51.093048, lng: 6.842120 })
+const markers = ref([
+  {
+    position: {
+      lat: 51.093048, lng: 6.842120
+    }
+  } // Along list of clusters
+])
+/*
 const store = useStore()
 
 const darkMode = computed(() => store.state.darkMode)
@@ -53,13 +62,14 @@ const pagesList = computed(() => {
 
 <template>
   <div> Hello World</div>
-  <h5>{{ name }}</h5>
-  <div @click="log">
-    {{ msg }}
-  </div>
-  <div>
-    {{ vehicles }}
-  </div>
+  <button
+    type="button"
+    class="btn btn-danger pull-right"
+    data-toggle="modal"
+    @click="handleRemove(id)"
+  >
+    Delete
+  </button>
   <main-section>
     <modal-box
       v-model="isModalActive"
@@ -136,4 +146,38 @@ const pagesList = computed(() => {
       </div>
     </card-component>
   </main-section>
+  <main-section>
+    <div
+      id="map"
+      class="md:w-10/12 shadow-2xl md:mx-auto"
+      style="height: 400px"
+    >
+      <GMapMap
+        :center="center"
+        :zoom="7"
+        map-type-id="terrain"
+        style="width: 400px; height: 400px"
+      >
+        <GMapCluster>
+          <GMapMarker
+            v-for="(m, index) in markers"
+            :key="index"
+            :position="m.position"
+            :clickable="true"
+            :draggable="true"
+            @click="center=m.position"
+          />
+        </GMapCluster>
+      </GMapMap>
+    </div>
+  </main-section>
 </template>
+
+<style>
+
+  map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
+</style>

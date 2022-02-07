@@ -34,6 +34,10 @@ const props = defineProps({
   item: {
     type: [Number],
     default: null
+  },
+  table: {
+    type: String,
+    default: null
   }
 })
 
@@ -52,8 +56,9 @@ const confirmCancel = mode => {
 const confirm = () => confirmCancel('confirm')
 
 const cancel = () => confirmCancel('cancel')
-function handleRemove (id) {
-  axios.delete('http://localhost:5000/vehicles/' + id)
+// add here dynamic routes (vehicles/routes)
+function handleRemove (table, item) {
+  axios.delete(`http://localhost:5000/api_v1/${table}/${item}`)
 }
 // const post = await axios.delete('http://localhost:5000/vehicles/<license>').then(r => r.json())
 </script>
@@ -84,17 +89,25 @@ function handleRemove (id) {
 
       <jb-buttons>
         <jb-button
+          v-if="hasItemPass"
           :label="buttonLabel"
           :color="button"
-          item="id"
-          @click="confirm; handleRemove(item)"
+          :table="table"
+          :item="item"
+          @click="handleRemove(table , item); confirm();"
         />
         <jb-button
           v-if="hasCancel"
-          label="Cancel"
+          label="Abbrechen"
           :color="button"
           outline
           @click="cancel"
+        />
+        <jb-button
+          v-else
+          :label="buttonLabel"
+          :color="button"
+          @click="confirm"
         />
       </jb-buttons>
     </card-component>

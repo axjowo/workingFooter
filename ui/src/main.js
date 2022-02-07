@@ -7,10 +7,11 @@ import store from './store'
 import axios from './plugins/axios'
 import VueAxios from 'vue-axios'
 import { darkModeKey } from '@/config.js'
+import VueGoogleMaps from '@fawmi/vue-google-maps'
 
 import './css/main.css'
 
-/* Fetch sample data */
+/* Fetch sample data (can be deleted) */
 store.dispatch('fetch', 'clients')
 store.dispatch('fetch', 'history')
 
@@ -21,8 +22,8 @@ if ((localStorageDarkModeValue === null && window.matchMedia('(prefers-color-sch
   store.dispatch('darkMode')
 }
 
-/* Default title tag */
-const defaultDocumentTitle = 'Admin One Vue 3 Tailwind'
+/* Default title tag (shown in BrowserTab) */
+const defaultDocumentTitle = 'Die BäckerAI'
 
 /* Collapse mobile aside menu on route change */
 router.beforeEach(to => {
@@ -33,7 +34,7 @@ router.beforeEach(to => {
 router.afterEach(to => {
   /* Set document title from route meta */
   if (to.meta && to.meta.title) {
-    document.title = `${to.meta.title} — ${defaultDocumentTitle}`
+    document.title = `${to.meta.title} - ${defaultDocumentTitle}`
   } else {
     document.title = defaultDocumentTitle
   }
@@ -42,4 +43,15 @@ router.afterEach(to => {
   store.dispatch('fullScreenToggle', !!to.meta.fullScreen)
 })
 
-createApp(App).use(store).use(VueAxios, axios).use(router).mount('#app')
+/* implement used packets */
+const app = createApp(App)
+app.use(store)
+app.use(VueAxios, axios)
+app.use(router)
+/* keep api Key Secret! */
+app.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyAj5ftv3SvxFbeQ8urfMBnJLzBbnFNjpn0'
+  }
+})
+app.mount('#app')

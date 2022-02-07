@@ -2,21 +2,25 @@
 
 import {
   // delete if not used
+  /*
   mdiAccountCircle,
-  mdiDesktopMac,
-  // mdiGithub,
+  mdiGithub,
   mdiLock,
   mdiAlertCircle,
-  // mdiMonitorShimmer,
+  mdiMonitorShimmer,
   mdiSquareEditOutline,
-  mdiTable,
+  ,
   mdiViewList,
   mdiTelevisionGuide,
   mdiResponsive,
+  */
   // actual used mdi
   mdiRoutes,
   mdiPretzel,
-  mdiTruck
+  mdiTruck,
+  mdiDesktopMac,
+  mdiTable,
+  mdiArrowTopRightThin
 } from '@mdi/js'
 
 export default [
@@ -30,24 +34,22 @@ export default [
     {
       to: '/routenbearbeitung',
       label: 'Routenbearbeitung',
-      icon: mdiRoutes
-      // updateMark: true
+      icon: mdiRoutes,
+      updateMark: true
+    },
+    {
+      to: '/fahrzeuge',
+      label: 'Fahrzeuge',
+      icon: mdiTruck
+    },
+    {
+      to: '/vorhersage',
+      label: 'Vorhersage',
+      icon: mdiArrowTopRightThin
     }
   ],
   'Verkäufersicht',
   [
-    {
-      to: '/tables',
-      label: 'Tables',
-      icon: mdiTable,
-      updateMark: true
-    },
-    {
-      to: '/tables2',
-      label: 'Tables2',
-      icon: mdiTable,
-      updateMark: true
-    },
     {
       to: '/axiostest',
       label: 'AxiosTest',
@@ -57,6 +59,19 @@ export default [
     {
       to: '/testview',
       label: 'Testview',
+      icon: mdiTable,
+      updateMark: true
+    }
+    /*
+    {
+      to: '/tables',
+      label: 'Tables',
+      icon: mdiTable,
+      updateMark: true
+    },
+    {
+      to: '/tables2',
+      label: 'Tables2',
       icon: mdiTable,
       updateMark: true
     },
@@ -91,11 +106,6 @@ export default [
       icon: mdiAlertCircle
     },
     {
-      to: '/fahrzeuge',
-      label: 'Fahrzeuge',
-      icon: mdiTruck
-    },
-    {
       label: 'Submenus',
       subLabel: 'Submenus Example',
       icon: mdiViewList,
@@ -108,6 +118,7 @@ export default [
         }
       ]
     }
+    */
   ],
   'About',
   [

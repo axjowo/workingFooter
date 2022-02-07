@@ -7,21 +7,21 @@ import {
   mdiClose,
   mdiDotsVertical,
   mdiMenu,
-  mdiClockOutline,
-  mdiCloud,
-  mdiCrop,
-  mdiAccount,
-  mdiCogOutline,
-  mdiEmail,
-  mdiLogout,
-  mdiGithub,
+  // mdiClockOutline,
+  // mdiCloud,
+  // mdiCrop,
+  // mdiAccount,
+  // mdiCogOutline,
+  // mdiEmail,
+  // mdiLogout,
+  // mdiGithub,
   mdiThemeLightDark
 } from '@mdi/js'
 import NavBarItem from '@/components/NavBarItem.vue'
 import NavBarItemLabel from '@/components/NavBarItemLabel.vue'
-import NavBarMenu from '@/components/NavBarMenu.vue'
-import NavBarMenuDivider from '@/components/NavBarMenuDivider.vue'
-import UserAvatar from '@/components/UserAvatar.vue'
+// import NavBarMenu from '@/components/NavBarMenu.vue'
+// import NavBarMenuDivider from '@/components/NavBarMenuDivider.vue'
+// import UserAvatar from '@/components/UserAvatar.vue'
 import Icon from '@/components/Icon.vue'
 import NavBarSearch from '@/components/NavBarSearch.vue'
 
@@ -35,7 +35,7 @@ const isNavBarVisible = computed(() => !store.state.isFullScreen)
 
 const isAsideMobileExpanded = computed(() => store.state.isAsideMobileExpanded)
 
-const userName = computed(() => store.state.userName)
+// const userName = computed(() => store.state.userName)
 
 const menuToggleMobileIcon = computed(() => isAsideMobileExpanded.value ? mdiBackburger : mdiForwardburger)
 
@@ -80,9 +80,6 @@ const menuOpenLg = () => {
           size="24"
         />
       </nav-bar-item>
-      <nav-bar-item>
-        <nav-bar-search />
-      </nav-bar-item>
     </div>
     <div class="flex-none items-stretch flex h-14 lg:hidden">
       <nav-bar-item @click.prevent="menuNavBarToggle">
@@ -100,6 +97,7 @@ const menuOpenLg = () => {
       <div
         class="max-h-screen-menu overflow-y-auto lg:overflow-visible lg:flex lg:items-stretch lg:justify-end lg:ml-auto"
       >
+        <!--
         <nav-bar-menu has-divider>
           <nav-bar-item-label
             :icon="mdiMenu"
@@ -162,6 +160,10 @@ const menuOpenLg = () => {
             </nav-bar-item>
           </template>
         </nav-bar-menu>
+        -->
+        <nav-bar-item>
+          <nav-bar-search />
+        </nav-bar-item>
         <nav-bar-item
           has-divider
           is-desktop-icon-only
@@ -173,6 +175,7 @@ const menuOpenLg = () => {
             is-desktop-icon-only
           />
         </nav-bar-item>
+        <!--
         <nav-bar-item
           href="https://github.com/justboil/admin-one-vue-tailwind"
           has-divider
@@ -191,6 +194,7 @@ const menuOpenLg = () => {
             is-desktop-icon-only
           />
         </nav-bar-item>
+        -->
       </div>
     </div>
   </nav>

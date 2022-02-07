@@ -1,4 +1,5 @@
 <script setup>
+// ToDo: only if time, change that if SideBar collapses icons are still shown
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { mdiMenu } from '@mdi/js'
@@ -34,16 +35,10 @@ const menuClick = (event, item) => {
   <aside
     v-show="!isFullScreen"
     id="aside"
-    class="w-60 fixed top-0 z-40 h-screen bg-gray-800 transition-position lg:left-0 dark:border-r dark:border-gray-800 dark:bg-gray-900"
+    class="w-60 fixed top-0 z-40 h-screen bg-gray-800 transition-position lg:left-0 dark:bg-gray-900"
     :class="[ isAsideMobileExpanded ? 'left-0' : '-left-60', isAsideLgActive ? 'block' : 'lg:hidden xl:block' ]"
   >
-    <span style="padding-right:3px; padding-top: 3px; display:inline-block;">
-      <img
-        class="manImg"
-        src="@/assets/BäckerAI_logo.png"
-      >
-    </span>
-    <div class="flex flex-row w-full bg-gray-900 text-white flex-1 h-14 items-center">
+    <div class="flex flex-row w-full bg-gray-800 text-white flex-1 h-14 items-center dark:bg-gray-900">
       <nav-bar-item
         type="hidden lg:flex xl:hidden"
         active-color="text-white"
@@ -56,9 +51,12 @@ const menuClick = (event, item) => {
           size="24"
         />
       </nav-bar-item>
-      <div class="flex-1 px-3">
-        <span>Menü</span>
-      </div>
+      <span style="padding-right:3px; padding-top: 3px; display:inline-block; ">
+        <img
+          class="manImg"
+          src="@/assets/Logo_lang.png"
+        >
+      </span>
     </div>
     <div>
       <template v-for="(menuGroup, index) in menu">

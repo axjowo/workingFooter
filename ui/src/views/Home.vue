@@ -25,7 +25,7 @@ import CardTransactionBar from '@/components/CardTransactionBar.vue'
 import CardClientBar from '@/components/CardClientBar.vue'
 import TitleSubBar from '@/components/TitleSubBar.vue'
 
-const titleStack = ref(['Admin', 'Dashboard'])
+const titleStack = ref(['Start', 'Dashboard'])
 
 const chartData = ref(null)
 
