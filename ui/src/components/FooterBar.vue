@@ -19,14 +19,14 @@ const isFooterBarVisible = computed(() => !store.state.isFullScreen)
     <level>
       <div class="text-center md:text-left">
         <b>&copy; {{ year }}, <a
-          href="https://justboil.me/"
+          href="https://dasistderanderelink.de/"
           target="_blank"
-        >JustBoil.me</a>.</b>
-        Get more with <a
-          href="https://justboil.me/tailwind-admin-templates/vue-dashboard/"
+        >Hier könnte ihre Werbung stehen</a>. </b>
+        <a
+          href="https://dasistderlink.de"
           target="_blank"
           class="text-blue-500"
-        >Premium version</a>
+        >Link ins Nirvana</a>
       </div>
       <div class="md:py-2">
         <a href="https://justboil.me">
